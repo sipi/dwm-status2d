@@ -3,6 +3,8 @@ dwm-status2d
 
 patch for DWM that allows colors and draw rectangle in the DWM status bar
 
+![status2d preview](./screenshots/status2d.png)
+
 usage
 =====
 
