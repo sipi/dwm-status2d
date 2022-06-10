@@ -32,6 +32,28 @@ index a96f33c..24b1eeb 100644
  	return m;
  }
  
++Bool
++isHexDigit(char digit) {
++	return (digit >= '0' && digit <= '9') || (digit >= 'A' && digit <= 'F') || (digit >= 'a' && digit <= 'f');
++}
++
++Bool
++isHexColor(char* hex) {
++	return isHexDigit(hex[1]) && isHexDigit(hex[2]) && isHexDigit(hex[3]) && 
++		isHexDigit(hex[4]) && isHexDigit(hex[5]) && isHexDigit(hex[6]) &&
++		hex[0] == '#' && hex[7] == '\0';
++}
++
++void
++readAndSetColor(int clrIdx, char* txt) {
++	char buf[8];
++	memcpy(buf, txt, 7);
++	buf[7] = '\0';
++	if(isHexColor(buf)) {
++		drw_clr_create(drw, &drw->scheme[clrIdx], buf);
++	}
++}
++
 +int
 +drawstatusbar(Monitor *m, int bh, char* stext) {
 +	int ret, i, w, x, len;
@@ -94,16 +116,10 @@ index a96f33c..24b1eeb 100644
 +			/* process code */
 +			while (text[++i] != '^') {
 +				if (text[i] == 'c') {
-+					char buf[8];
-+					memcpy(buf, (char*)text+i+1, 7);
-+					buf[7] = '\0';
-+					drw_clr_create(drw, &drw->scheme[ColFg], buf);
++					readAndSetColor(ColFg, (char*)text+i+1);
 +					i += 7;
 +				} else if (text[i] == 'b') {
-+					char buf[8];
-+					memcpy(buf, (char*)text+i+1, 7);
-+					buf[7] = '\0';
-+					drw_clr_create(drw, &drw->scheme[ColBg], buf);
++					readAndSetColor(ColBg, (char*)text+i+1);
 +					i += 7;
 +				} else if (text[i] == 'd') {
 +					drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
