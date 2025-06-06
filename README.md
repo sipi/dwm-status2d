@@ -39,6 +39,8 @@ Compatible dwmstatus program
 
 See my [dwmstatus](https://github.com/sipi/dwmstatus) repository for a compatible statusbar program (written in C).
 
+Do you want your status2d script here? Send me a link. 
+
 Thanks to
 =========
 - @lhark for his improvements
