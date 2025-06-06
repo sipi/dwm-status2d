@@ -38,3 +38,10 @@ Compatible dwmstatus program
 ============================
 
 See my [dwmstatus](https://github.com/sipi/dwmstatus) repository for a compatible statusbar program (written in C).
+
+Thanks to
+=========
+- @lhark for his improvements
+- @saifshahriar for the extrabar compatible version
+
+
